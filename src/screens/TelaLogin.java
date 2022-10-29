@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 import persistence.ClienteDAO;
 import persistence.ContaDAO;
 import templates.ICliente;
@@ -207,7 +208,6 @@ public class TelaLogin extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				setVisible(false);
 				new TelaInicial();
 			}

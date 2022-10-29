@@ -12,19 +12,19 @@ import templates.ICliente;
 
 public class ClienteDAO implements IClienteDAO{
 	IConexao conexao;
-	
+	Connection conn;
+	PreparedStatement ps;
 	public ClienteDAO()
 	{
 		conexao=new ConexaoMySql();
 	}
 	
 	@Override
-	public int cadastrarCliente(ICliente cliente) {
-		// TODO Auto-generated method stub
+	public int cadastrarCliente(ICliente cliente) 
+	{
 		if(cliente instanceof ClientePJ)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("INSERT INTO clientepj VALUES (?, ?, ?, ?,?);");
 				ps.setString(1, cliente.pegaNome());
@@ -36,15 +36,13 @@ public class ClienteDAO implements IClienteDAO{
 				conn.close();
 				return 1;
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return 0;
 			}
 		}
 		else
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("INSERT INTO clientepf VALUES (?, ?, ?, ?,?,?);");
 				ps.setString(1, cliente.pegaNome());
@@ -57,7 +55,6 @@ public class ClienteDAO implements IClienteDAO{
 				conn.close();
 				return 1;
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return 0;
 			}
@@ -65,13 +62,11 @@ public class ClienteDAO implements IClienteDAO{
 	}
 
 	@Override
-	public void cadastrarEndereco(ICliente cliente) {
-		// TODO Auto-generated method stub
+	public void cadastrarEndereco(ICliente cliente) 
+	{
 		if(cliente instanceof ClientePF)
 		{
-			// TODO Auto-generated method stub
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("INSERT INTO enderecoclientepf VALUES (?, ?, ?, ?,?,?);");
 				ps.setString(1, cliente.pegaRua());
@@ -83,14 +78,12 @@ public class ClienteDAO implements IClienteDAO{
 				ps.execute();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("INSERT INTO enderecoclientepj VALUES (?, ?, ?, ?,?,?);");
 				ps.setString(1, cliente.pegaRua());
@@ -102,17 +95,15 @@ public class ClienteDAO implements IClienteDAO{
 				ps.execute();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
 
 	@Override
-	public ICliente localizarClientePf(String login, String senha) {
-		// TODO Auto-generated method stub
-		Connection conn = conexao.getConexao();
-		PreparedStatement ps;
+	public ICliente localizarClientePf(String login, String senha) 
+	{
+		conn = conexao.getConexao();
 		ICliente c1=null;
 		try {
 			ps = conn.prepareStatement("SELECT * FROM clientepf WHERE cpf = ? and senha = ?;");
@@ -133,17 +124,15 @@ public class ClienteDAO implements IClienteDAO{
             ps.close();
 			conn.close();
 		} catch (SQLException e){
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return c1;
 	}
 
 	@Override
-	public ICliente localizarClientePj(String login, String senha) {
-		// TODO Auto-generated method stub
+	public ICliente localizarClientePj(String login, String senha) 
+	{
 		Connection conn = conexao.getConexao();
-		PreparedStatement ps;
 		ICliente c1=null;
 		try {
 			ps = conn.prepareStatement("SELECT * FROM clientepj WHERE cnpj = ? and senha = ?;");
@@ -163,17 +152,15 @@ public class ClienteDAO implements IClienteDAO{
             ps.close();
 			conn.close();
 		} catch (SQLException e){
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return c1;
 	}
 
 	@Override
-	public Endereco localizarEndereco(ICliente cliente) {
-		// TODO Auto-generated method stub
-		Connection conn = conexao.getConexao();
-		PreparedStatement ps;
+	public Endereco localizarEndereco(ICliente cliente) 
+	{
+		conn = conexao.getConexao();
 		Endereco end=null;
 		if(cliente instanceof ClientePF)
 		{
@@ -194,7 +181,6 @@ public class ClienteDAO implements IClienteDAO{
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -217,7 +203,6 @@ public class ClienteDAO implements IClienteDAO{
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -225,10 +210,9 @@ public class ClienteDAO implements IClienteDAO{
 	}
 
 	@Override
-	public void cadastrarTelefone(ICliente cliente,String telefone) {
-		// TODO Auto-generated method stub
-		Connection conn = conexao.getConexao();
-		PreparedStatement ps;
+	public void cadastrarTelefone(ICliente cliente,String telefone) 
+	{
+		conn = conexao.getConexao();
 		if(cliente instanceof ClientePJ)
 		{
 			try {
@@ -238,7 +222,6 @@ public class ClienteDAO implements IClienteDAO{
 				ps.execute();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -251,7 +234,6 @@ public class ClienteDAO implements IClienteDAO{
 				ps.execute();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

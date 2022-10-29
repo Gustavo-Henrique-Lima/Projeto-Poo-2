@@ -3,11 +3,11 @@ package screens;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -20,6 +20,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+
 import persistence.ClienteDAO;
 import persistence.ConexaoMySql;
 import persistence.ContaDAO;
@@ -70,7 +71,6 @@ public class ClientePfAbrirConta extends JFrame{
 	{
 		try
 		{
-			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 906, 567);
 			setResizable(false);
@@ -107,7 +107,6 @@ public class ClientePfAbrirConta extends JFrame{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
 					setVisible(false);
 					new TelaLogin();
 				}
@@ -324,8 +323,6 @@ public class ClientePfAbrirConta extends JFrame{
 		    btnAbrir.setBounds(100, 459, 193, 40);
 		    btnAbrir.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		    painel.add(btnAbrir);
-		    
-		   
 		    }
 		catch(Exception e)
 		{
@@ -334,7 +331,6 @@ public class ClientePfAbrirConta extends JFrame{
 	}
 	public void listarEstados()
 	{
-		
 		IConexao conexao=new ConexaoMySql();
 		Connection conn = conexao.getConexao();
 		PreparedStatement ps;
@@ -349,7 +345,6 @@ public class ClientePfAbrirConta extends JFrame{
 	        ps.close();
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -371,7 +366,6 @@ public class ClientePfAbrirConta extends JFrame{
 	        ps.close();
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

@@ -11,15 +11,14 @@ import exception.DesativarContaComSaldo;
 import exception.SaldoInsuficiente;
 
 public class ContaCorrente implements IConta,Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private String numeroConta;
 	private String agencia;
 	private BigDecimal saldo;
 	private Byte status;
 	private Date dataAbertura;
+	
 	public ContaCorrente(String numero,BigDecimal valor, Byte status)
 	{
 		this.numeroConta=numero;
@@ -86,8 +85,8 @@ public class ContaCorrente implements IConta,Serializable{
 		this.status = status;
 	}
 	@Override
-	public void sacar(BigDecimal valor) throws SaldoInsuficiente, ContaDesativada {
-		// TODO Auto-generated method stub
+	public void sacar(BigDecimal valor) throws SaldoInsuficiente, ContaDesativada 
+	{
 		BigDecimal taxa=ContaPoupanca.toBigDecimal(taxaSaqueContaCorrente);
 		BigDecimal valorTaxado=valor.add(taxa.multiply(valor));
 		if(valor.compareTo(BigDecimal.ZERO)!=0 && valorTaxado.compareTo(this.saldo)<=0 && this.status==1)
@@ -104,8 +103,8 @@ public class ContaCorrente implements IConta,Serializable{
 		}
 	}
 	@Override
-	public void depositar(BigDecimal valor) throws DepositoInvalido, ContaDesativada {
-		// TODO Auto-generated method stub
+	public void depositar(BigDecimal valor) throws DepositoInvalido, ContaDesativada 
+	{
 		if(valor.compareTo(BigDecimal.ZERO)==0)
 		{
 			throw new DepositoInvalido("O valor de depósito deve ser maior do que zero");
@@ -120,8 +119,8 @@ public class ContaCorrente implements IConta,Serializable{
 		}
 	}
 	@Override
-	public void transferir(BigDecimal valor, IConta contaDestino) {
-		// TODO Auto-generated method stub
+	public void transferir(BigDecimal valor, IConta contaDestino) 
+	{
 		BigDecimal taxa=ContaPoupanca.toBigDecimal(taxaAdmContaCorrente);
 		BigDecimal valorTaxado=valor.add(taxa.multiply(valor));
 		if(contaDestino instanceof ContaCorrente && valor.compareTo(BigDecimal.ZERO)!=0 && valorTaxado.compareTo(this.saldo)>=0)
@@ -131,7 +130,6 @@ public class ContaCorrente implements IConta,Serializable{
 				setSaldo(getSaldo().subtract(valorTaxado));
 				contaDestino.depositar(valor);
 			} catch (DepositoInvalido | ContaDesativada e) {
-				// TODO Auto-generated catch block
 				e.getMessage();
 			}
 		}
@@ -141,14 +139,13 @@ public class ContaCorrente implements IConta,Serializable{
 			try {
 				contaDestino.depositar(valor);
 			} catch (DepositoInvalido | ContaDesativada e) {
-				// TODO Auto-generated catch block
 				e.getMessage();
 			}
 		}
 	}
 	@Override
-	public void desativarConta() throws ContaDesativada, DesativarContaComSaldo {
-		// TODO Auto-generated method stub
+	public void desativarConta() throws ContaDesativada, DesativarContaComSaldo 
+	{
 		if(this.status==1 && this.saldo.compareTo(BigDecimal.ZERO)==0)
 		{
 			this.status=0;
@@ -164,32 +161,26 @@ public class ContaCorrente implements IConta,Serializable{
 	}
 	@Override
 	public String pegaNumero() {
-		// TODO Auto-generated method stub
 		return this.numeroConta;
 	}
 	@Override
 	public BigDecimal pegaSaldo() {
-		// TODO Auto-generated method stub
 		return this.saldo;
 	}
 	@Override
 	public String pegaAgencia() {
-		// TODO Auto-generated method stub
 		return this.agencia;
 	}
 	@Override
 	public Byte pegaStatus() {
-		// TODO Auto-generated method stub
 		return this.status;
 	}
 	@Override
 	public BigDecimal toBigDecimaL(String valor) {
-		// TODO Auto-generated method stub
 		return new BigDecimal(valor);
 	}
 	@Override
 	public java.sql.Date pegaData() {
-		// TODO Auto-generated method stub
 		return this.dataAbertura;
 	}
 }

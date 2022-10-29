@@ -14,11 +14,9 @@ public class TipoCliente extends JFrame{
 	private JButton btPf;
 	private JLabel lblPJ;
 	private JButton btnPessoaJuridica;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel painel;
+	
 	public TipoCliente() 
 	{
 		setTitle("Bank of Taboquinha");

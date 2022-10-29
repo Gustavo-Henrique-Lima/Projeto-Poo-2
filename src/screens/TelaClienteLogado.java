@@ -35,11 +35,9 @@ public class TelaClienteLogado extends JFrame{
 	private JMenuBar barra;
 	private ClienteDAO clientedao=new ClienteDAO();
 	private ContaDAO contadao=new ContaDAO();
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JButton btnDesativar;
+	
 	public TelaClienteLogado(ICliente cliente,IConta conta)
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,7 +93,6 @@ public class TelaClienteLogado extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				setVisible(false);
 				new TelaDeposito(cliente, conta);
 			}
@@ -109,7 +106,6 @@ public class TelaClienteLogado extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				setVisible(false);
 				new TelaSaque(cliente, conta);
 			}
@@ -123,7 +119,6 @@ public class TelaClienteLogado extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				setVisible(false);
 				new TelaExtrato(cliente, conta);
 			}
@@ -137,14 +132,12 @@ public class TelaClienteLogado extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				try {
 					conta.desativarConta();
 					contadao.desativarConta(conta, cliente);
 					setVisible(false);
 					new TelaInicial();
 				} catch (ContaDesativada | DesativarContaComSaldo e1) {
-					// TODO Auto-generated catch block
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
 			}

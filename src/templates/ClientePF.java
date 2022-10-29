@@ -15,10 +15,7 @@ import exception.TelefoneJaRemovido;
 
 
 public class ClientePF implements ICliente,Serializable{
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String ultimoNome;
@@ -167,8 +164,8 @@ public class ClientePF implements ICliente,Serializable{
 	}
 
 	@Override
-	public void removerTelefone(String telefone) throws TelefoneJaRemovido {
-		// TODO Auto-generated method stub
+	public void removerTelefone(String telefone) throws TelefoneJaRemovido 
+	{
 		if(!telefones.contains(telefone))
 		{
 			throw new TelefoneJaRemovido("Telefone já removido");
@@ -181,32 +178,27 @@ public class ClientePF implements ICliente,Serializable{
 
 	@Override
 	public void alterarRua(String rua) {
-		// TODO Auto-generated method stub
 		endereco.setRua(rua);
 	}
 
 	@Override
 	public void alterarBairro(String bairro) {
-		// TODO Auto-generated method stub
 		endereco.setBairro(bairro);
 	}
 
 	@Override
 	public void alterarNumero(String numero) {
-		// TODO Auto-generated method stub
 		endereco.setNumero(numero);
 	}
 
 	@Override
 	public void alterarCidade(String cidade) {
-		// TODO Auto-generated method stub
 		endereco.setCidade(cidade);
 	}
 
 	@Override
 	public void alterarEstado(String estado) {
 		endereco.setEstado(estado);
-		
 	}
 
 	@Override
@@ -223,61 +215,51 @@ public class ClientePF implements ICliente,Serializable{
 
 	@Override
 	public String pegaNome() {
-		// TODO Auto-generated method stub
 		return this.nome;
 	}
 
 	@Override
 	public String pegaSobrenome() {
-		// TODO Auto-generated method stub
 		return this.ultimoNome;
 	}
 
 	@Override
 	public String pegalogin() {
-		// TODO Auto-generated method stub
 		return this.cpf;
 	}
 
 	@Override
 	public String pegaEmail() {
-		// TODO Auto-generated method stub
 		return this.email;
 	}
 
 	@Override
 	public String pegaSenha() {
-		// TODO Auto-generated method stub
 		return this.senha;
 	}
 
 	@Override
 	public Byte pegaCartao() {
-		// TODO Auto-generated method stub
 		return this.cartaoCredito;
 	}
 
 	@Override
 	public String pegaRua() {
-		// TODO Auto-generated method stub
 		return endereco.getRua();
 	}
 
 	@Override
 	public String pegaBairro() {
-		// TODO Auto-generated method stub
 		return endereco.getBairro();
 	}
 
 	@Override
 	public String pegaNumero() {
-		// TODO Auto-generated method stub
 		return endereco.getNumero();
 	}
 
 	@Override
 	public String pegaCidade() {
-		// TODO Auto-generated method stub
 		return endereco.getCidade();
 	}
 
@@ -293,7 +275,6 @@ public class ClientePF implements ICliente,Serializable{
 	}
 	@Override
 	public void adicionarEndereco(Endereco end) {
-		// TODO Auto-generated method stub
 		this.endereco=end;
 	}
 }

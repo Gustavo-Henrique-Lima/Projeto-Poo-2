@@ -29,10 +29,8 @@ public class TelaDeposito extends JFrame{
 	private JLabel lblNewLabel;
 	private ContaDAO contadao= new ContaDAO();
 	private JButton btnVoltar;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	public TelaDeposito(ICliente cliente,IConta conta)
 	{
 			Locale.setDefault(Locale.US);
@@ -73,7 +71,6 @@ public class TelaDeposito extends JFrame{
 						setVisible(false);
 						new TelaClienteLogado(cliente, conta);
 					} catch (DepositoInvalido | ContaDesativada e1) {
-						// TODO Auto-generated catch block
 						JOptionPane.showMessageDialog(null, e1.getMessage());
 					}
 				}
@@ -89,7 +86,6 @@ public class TelaDeposito extends JFrame{
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
 					setVisible(false);
 					new TelaClienteLogado(cliente, conta);
 				}
@@ -101,4 +97,3 @@ public class TelaDeposito extends JFrame{
 			return new BigDecimal(valor);
 		}
 }
-

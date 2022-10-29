@@ -50,7 +50,7 @@ public class TelaInicial extends JFrame{
 		lblNome.setBounds(325,10,220,150);
 		painel.add(lblNome);
 		
-		imageIcon= new ImageIcon("C:\\Users\\gusta\\eclipse-workspace\\projeto\\src\\imagens\\cartao.png");
+		imageIcon= new ImageIcon("C:\\Users\\gusta\\eclipse-workspace\\projeto2.0\\src\\images\\cartao.png");
 		imagem= new JLabel(imageIcon);
 		imagem.setBounds(0, 0, 300, 600);
 		painel.add(imagem);

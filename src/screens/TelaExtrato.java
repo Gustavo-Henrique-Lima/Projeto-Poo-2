@@ -28,9 +28,6 @@ import java.awt.Font;
 
 public class TelaExtrato extends JFrame{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	IConexao conexao;
 	private JTable table;
@@ -38,6 +35,7 @@ public class TelaExtrato extends JFrame{
 	private Object[][] dataTable = {};
 	private DefaultTableModel tableModel = new DefaultTableModel(dataTable, columnNames);
 	private JScrollPane scrollPane;
+	
 	public TelaExtrato(ICliente cliente, IConta conta)
 	{
 		setSize(571, 327);
@@ -63,7 +61,6 @@ public class TelaExtrato extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				setVisible(false);
 				new TelaClienteLogado(cliente, conta);
 			}
@@ -118,7 +115,6 @@ public class TelaExtrato extends JFrame{
 	            for (int i = 1; i <= columnCount; i++) {
 	                columnNames.add(metaData.getColumnName(i));
 	            }
-
 	            // Data of the table
 	            Vector<Vector<Object>> data = new Vector<Vector<Object>>();
 	            while (rs.next()) {
@@ -131,11 +127,9 @@ public class TelaExtrato extends JFrame{
 	            tableModel.setDataVector(data, columnNames);
 	            conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}

@@ -5,7 +5,8 @@ import java.math.BigDecimal;
 import templates.ICliente;
 import templates.IConta;
 
-public interface IContaDAO {
+public interface IContaDAO 
+{
 	public void cadastrarConta(ICliente cliente,IConta conta);
 	public IConta localizarContaCc(ICliente cliente);
 	public IConta localizarContaCp(ICliente cliente);

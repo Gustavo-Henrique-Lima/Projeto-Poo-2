@@ -13,9 +13,6 @@ import java.awt.event.ActionEvent;
 
 public class DadosCliente extends JFrame{
 
-	/**
-	 * 
-	 */
 	private JButton btnVoltar;
 	private JLabel lblDados;
 	private JLabel lblNome;

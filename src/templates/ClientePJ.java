@@ -16,9 +16,7 @@ import exception.TelefoneJaRemovido;
 
 
 public class ClientePJ implements ICliente,Serializable{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private String nomeFantasia;
 	private String cnpj;
@@ -106,8 +104,8 @@ public class ClientePJ implements ICliente,Serializable{
 		}
 	}
 	@Override
-	public void removerConta(IConta conta) throws ContaJaRemovida {
-		// TODO Auto-generated method stub
+	public void removerConta(IConta conta) throws ContaJaRemovida 
+	{
 		if(!contas.contains(conta))
 		{
 			throw new ContaJaRemovida("Conta já removida");
@@ -118,8 +116,8 @@ public class ClientePJ implements ICliente,Serializable{
 		}
 	}
 	@Override
-	public void inserirTelefone(String telefone) throws TelefoneJaCadastrado {
-		// TODO Auto-generated method stub
+	public void inserirTelefone(String telefone) throws TelefoneJaCadastrado 
+	{
 		if(telefones.contains(telefone))
 		{
 			throw new TelefoneJaCadastrado("Telefone já cadastrado");
@@ -130,8 +128,8 @@ public class ClientePJ implements ICliente,Serializable{
 		}
 	}
 	@Override
-	public void removerTelefone(String telefone) throws TelefoneJaRemovido {
-		// TODO Auto-generated method stub
+	public void removerTelefone(String telefone) throws TelefoneJaRemovido 
+	{
 		if(!telefones.contains(telefone))
 		{
 			throw new TelefoneJaRemovido("Telefone já removido");
@@ -143,97 +141,77 @@ public class ClientePJ implements ICliente,Serializable{
 	}
 	@Override
 	public void alterarRua(String rua) {
-		// TODO Auto-generated method stub
 		endereco.setRua(rua);
 	}
 	@Override
 	public void alterarBairro(String bairro) {
-		// TODO Auto-generated method stub
 		endereco.setBairro(bairro);
 	}
 	@Override
 	public void alterarNumero(String numero) {
-		// TODO Auto-generated method stub
 		endereco.setNumero(numero);
 	}
 	@Override
 	public void alterarCidade(String cidade) {
-		// TODO Auto-generated method stub
 		endereco.setCidade(cidade);
 	}
 	@Override
 	public void alterarEstado(String estado) {
-		// TODO Auto-generated method stub
 		endereco.setEstado(estado);
 	}
 	@Override
 	public void contratarCartao(Byte opcao) throws ClienteJaPossuiCartao {
-		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public String pegaNome() {
-		// TODO Auto-generated method stub
 		return this.nomeFantasia;
 	}
 	@Override
 	public String pegaSobrenome() {
-		// TODO Auto-generated method stub
 		return this.razaoSocial;
 	}
 	@Override
 	public String pegalogin() {
-		// TODO Auto-generated method stub
 		return this.cnpj;
 	}
 	@Override
 	public String pegaEmail() {
-		// TODO Auto-generated method stub
 		return this.email;
 	}
 	@Override
 	public String pegaSenha() {
-		// TODO Auto-generated method stub
 		return this.senha;
 	}
 	@Override
 	public Byte pegaCartao() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public String pegaRua() {
-		// TODO Auto-generated method stub
 		return endereco.getRua();
 	}
 	@Override
 	public String pegaBairro() {
-		// TODO Auto-generated method stub
 		return endereco.getBairro();
 	}
 	@Override
 	public String pegaNumero() {
-		// TODO Auto-generated method stub
 		return endereco.getNumero();
 	}
 	@Override
 	public String pegaCidade() {
-		// TODO Auto-generated method stub
 		return endereco.getCidade();
 	}
 	@Override
 	public String pegaEstado() {
-		// TODO Auto-generated method stub
 		return endereco.getEstado();
 	}
 	@Override
 	public BigDecimal pegalimiteCartao() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public void adicionarEndereco(Endereco end) {
-		// TODO Auto-generated method stub
 		this.endereco=end;
 	}
 }

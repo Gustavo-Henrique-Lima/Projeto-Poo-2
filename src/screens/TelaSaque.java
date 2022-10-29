@@ -24,15 +24,13 @@ import templates.IConta;
 
 public class TelaSaque extends JFrame{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JLabel lblNewLabel;
 	private ContaDAO contadao= new ContaDAO();
 	private JButton btnVoltar;
+	
 	public TelaSaque(ICliente cliente,IConta conta)
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,13 +70,11 @@ public class TelaSaque extends JFrame{
 					setVisible(false);
 					new TelaClienteLogado(cliente, conta);
 				} catch (SaldoInsuficiente e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 					setVisible(false);
 					new TelaClienteLogado(cliente, conta);
 				} catch (ContaDesativada e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 					setVisible(false);
@@ -96,7 +92,6 @@ public class TelaSaque extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				setVisible(false);
 				new TelaClienteLogado(cliente, conta);
 			}

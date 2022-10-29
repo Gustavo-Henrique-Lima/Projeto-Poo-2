@@ -14,22 +14,22 @@ import templates.ContaPoupanca;
 import templates.ICliente;
 import templates.IConta;
 
-public class ContaDAO implements IContaDAO{
-IConexao conexao;
-	
-	
+public class ContaDAO implements IContaDAO
+{
+	IConexao conexao;
+	Connection conn;
+	PreparedStatement ps;
 	public ContaDAO()
 	{
 		conexao=new ConexaoMySql();
 	}
 	
 	@Override
-	public void cadastrarConta(ICliente cliente, IConta conta) {
-		// TODO Auto-generated method stub
+	public void cadastrarConta(ICliente cliente, IConta conta) 
+	{
 		if(cliente instanceof ClientePF && conta instanceof ContaCorrente)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("INSERT INTO contacorrentepf VALUES (?, ?, ?, ?,?,?);");
 				ps.setString(1, conta.pegaNumero());
@@ -41,14 +41,12 @@ IConexao conexao;
 				ps.execute();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else if(cliente instanceof ClientePF && conta instanceof ContaPoupanca)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("INSERT INTO contapoupancapf VALUES (?, ?, ?, ?,?,?);");
 				ps.setString(1, conta.pegaNumero());
@@ -60,14 +58,12 @@ IConexao conexao;
 				ps.execute();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else if(cliente instanceof ClientePJ && conta instanceof ContaCorrente)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("INSERT INTO contacorrentepj VALUES (?, ?, ?, ?,?,?);");
 				ps.setString(1, conta.pegaNumero());
@@ -79,14 +75,12 @@ IConexao conexao;
 				ps.execute();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else if(cliente instanceof ClientePJ && conta instanceof ContaPoupanca)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("INSERT INTO contapoupancapj VALUES (?, ?, ?, ?,?,?);");
 				ps.setString(1, conta.pegaNumero());
@@ -98,16 +92,15 @@ IConexao conexao;
 				ps.execute();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
 
 	@Override
-	public IConta localizarContaCc(ICliente cliente) {
-		Connection conn = conexao.getConexao();
-		PreparedStatement ps;
+	public IConta localizarContaCc(ICliente cliente) 
+	{
+		conn = conexao.getConexao();
 		IConta conta=null;
 		if(cliente instanceof ClientePF)
 		{
@@ -126,7 +119,6 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return conta;
@@ -148,7 +140,6 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return conta;
@@ -156,9 +147,9 @@ IConexao conexao;
 	}
 
 	@Override
-	public IConta localizarContaCp(ICliente cliente) {
-		Connection conn = conexao.getConexao();
-		PreparedStatement ps;
+	public IConta localizarContaCp(ICliente cliente) 
+	{
+		conn = conexao.getConexao();
 		IConta conta=null;
 		if(cliente instanceof ClientePF)
 		{
@@ -177,7 +168,6 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return conta;
@@ -199,7 +189,6 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return conta;
@@ -207,12 +196,11 @@ IConexao conexao;
 	}
 
 	@Override
-	public void sacar(ICliente cliente,IConta conta, BigDecimal valor) {
-		// TODO Auto-generated method stub
+	public void sacar(ICliente cliente,IConta conta, BigDecimal valor) 
+	{
 		if(cliente instanceof ClientePJ && conta instanceof ContaPoupanca)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("UPDATE contapoupancapj set saldo = ? where numeroconta = ?;");
 				ps.setBigDecimal(1, valor);
@@ -221,14 +209,12 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else if(cliente instanceof ClientePJ && conta instanceof ContaCorrente)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("UPDATE contacorrentepj set saldo = ? where numeroconta = ?;");
 				ps.setBigDecimal(1, valor);
@@ -237,14 +223,12 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else if(cliente instanceof ClientePF && conta instanceof ContaPoupanca)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("UPDATE contapoupancapf set saldo = ? where numeroconta = ?;");
 				ps.setBigDecimal(1, valor);
@@ -253,14 +237,12 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else if(cliente instanceof ClientePF && conta instanceof ContaCorrente)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("UPDATE contacorrentepf set saldo = ? where numeroconta = ?;");
 				ps.setBigDecimal(1, valor);
@@ -269,19 +251,17 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
 
 	@Override
-	public void desativarConta(IConta conta, ICliente cliente) {
-		// TODO Auto-generated method stub
+	public void desativarConta(IConta conta, ICliente cliente) 
+	{
 		if(cliente instanceof ClientePJ && conta instanceof ContaPoupanca)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("UPDATE contapoupancapj set status = ? where numeroconta = ?;");
 				ps.setByte(1, (byte) 0);
@@ -290,14 +270,12 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else if(cliente instanceof ClientePJ && conta instanceof ContaCorrente)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("UPDATE contacorrentepj set status = ? where numeroconta = ?;");
 				ps.setByte(1, (byte) 0);
@@ -306,14 +284,12 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else if(cliente instanceof ClientePF && conta instanceof ContaPoupanca)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("UPDATE contapoupancapf set status = ? where numeroconta = ?;");
 				ps.setByte(1, (byte) 0);
@@ -322,14 +298,12 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else if(cliente instanceof ClientePF && conta instanceof ContaCorrente)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("UPDATE contacorrentepf set status = ? where numeroconta = ?;");
 				ps.setByte(1, (byte) 0);
@@ -338,7 +312,6 @@ IConexao conexao;
 	            ps.close();
 				conn.close();
 			} catch (SQLException e){
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}	
@@ -347,8 +320,7 @@ IConexao conexao;
 	{
 		if(cliente instanceof ClientePF)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("INSERT INTO transacaoclientepf VALUES (?,?,?,?,?);");
 				ps.setInt(1, 0);
@@ -359,14 +331,12 @@ IConexao conexao;
 				ps.execute();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		else if(cliente instanceof ClientePJ)
 		{
-			Connection conn = conexao.getConexao();
-			PreparedStatement ps;
+			conn = conexao.getConexao();
 			try {
 				ps = conn.prepareStatement("INSERT INTO transacaoclientepj VALUES (?,?,?,?,?);");
 				ps.setInt(1, 0);
@@ -377,7 +347,6 @@ IConexao conexao;
 				ps.execute();
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

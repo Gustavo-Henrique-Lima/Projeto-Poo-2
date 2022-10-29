@@ -20,6 +20,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+
 import formatting.SoNumeros;
 import persistence.ClienteDAO;
 import persistence.ConexaoMySql;
@@ -103,7 +104,6 @@ public class ClientePjAbrirConta extends JFrame{
 			login.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
 					setVisible(false);
 					new TelaLogin();
 				}
@@ -333,7 +333,6 @@ public class ClientePjAbrirConta extends JFrame{
 	}
 	public void listarEstados()
 	{
-		
 		IConexao conexao=new ConexaoMySql();
 		Connection conn = conexao.getConexao();
 		PreparedStatement ps;
@@ -348,7 +347,6 @@ public class ClientePjAbrirConta extends JFrame{
 	        ps.close();
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -370,7 +368,6 @@ public class ClientePjAbrirConta extends JFrame{
 	        ps.close();
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
